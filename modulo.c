@@ -1,33 +1,78 @@
 #include "modulo.h"
 
-
 void aritmetica() // Soma dos valores / Quantidade dos valores
 {
-    media = (teste.numero[1] + teste.numero[2] + teste.numero[3])/3;
-    printf("Resultado = %.2f\n",media);
+
+    system("cls");
+    printf("Media selecionada: Aritmetica\n\n");
+
+    for(cont=0;cont < quantidade;cont++)
+    {
+        printf("Digite a nota (%i): ",cont+1);
+        scanf("%f",&teste.numero[cont]);
+    }
+
+    for (cont=0;cont < quantidade;cont++)
+    {
+       media.total += (teste.numero[cont]);
+    }
+    media.total = (media.total/quantidade);
+    printf("\nResultado = %.2f\n",media.total);
 }
 
 void ponderada() // Soma dos valores * medias / Quantidade dos valores
 {
-    media = ((teste.numero[1] * media1) + (teste.numero[2] * media2) + (teste.numero[3] * media3))* 0.1;
-    printf("Resultado = %.2f\n",media);
+
+    system("cls");
+    printf("Media selecionada: Ponderada\n\n");
+
+    for(cont=0;cont < quantidade;cont++)
+    {
+        printf("Digite a nota (%i): ",cont+1);
+        scanf("%f",&teste.numero[cont]);
+    }
+
+    for (cont=0;cont < quantidade;cont++)
+    {
+       printf("Entre com o peso %i: ",cont + 1);
+       scanf("%i",&media.peso[cont]);
+       media.total += (teste.numero[cont] * media.peso[cont]);
+       media.pesosoma += media.peso[cont];
+    }
+
+    media.total = (media.total/media.pesosoma);
+
+    printf("\nResultado = %.2f\n",media.total);
 }
 
-void harmonica()
+void harmonica() // Quantidade dos valores / 1 / valores
 {
-    media = 3/((1/teste.numero[1]) + (1/teste.numero[2]) + (1/teste.numero[3]));
-    printf("Resultado = %.2f\n",media);
+
+    system("cls");
+    printf("Media selecionada: Harmonica\n\n");
+
+    for(cont=0;cont < quantidade;cont++)
+    {
+        printf("Digite a nota (%i): ",cont+1);
+        scanf("%f",&teste.numero[cont]);
+    }
+
+    for (cont=0;cont < quantidade;cont++)
+    {
+       media.total += (1/teste.numero[cont]);
+    }
+    media.total = (quantidade/media.total);
+    printf("\nResultado = %.2f\n",media.total);
 }
 
 void programa()
 {
+
     printf("Digite o tipo de media (A,P,H) : ");
     scanf("%c",&teste.letra);
 
     if ((teste.letra == 'A') || (teste.letra == 'P') || (teste.letra == 'H'))
     {
-        printf("Digite as 3 notas:\n");
-        scanf("%f%f%f",&teste.numero[1],&teste.numero[2],&teste.numero[3]);
 
         switch(teste.letra)
         {
