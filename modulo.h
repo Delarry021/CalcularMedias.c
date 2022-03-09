@@ -1,19 +1,29 @@
 #ifndef MODULO_H_INCLUDED
 #define MODULO_H_INCLUDED
-#define media1 5
-#define media2 3
-#define media3 2
 
-//Definição de estruturas e inicialização de funções e veriáveis
+// VALORES DOS PESOS NA MEDIA PONDERADA
+
+#define quantidade 5 //quantidade de valores (PADRÃ‚O 5)
+
+//DefiniÃ§Ã£o de estruturas e inicializaÃ§Ã£o de funÃ§Ãµes e veriÃ¡veis
 
 typedef struct aluno
 {
     char letra;
-    float numero[3];
+    float numero[quantidade];
 } aluno;
 
+typedef struct medias
+{
+    int peso[quantidade];
+    int pesosoma;
+    float total;
+} medias;
+
+int cont;
+
 aluno teste;
-float media;
+medias media;
 
 void aritmetica();
 void harmonica();
